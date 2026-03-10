@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ma-pred"
+version = "0.1.0"
+description = "Repo for building multi-agent prediction models"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "MIT" }
+authors = [{ name = "Seth Barrett"}, {name = "Ethan Butler"} ]
+keywords = ["machine-learning", "multi-agent", "prediction", "cli", "uv"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.13",
+  "Environment :: Console",
+  "Intended Audience :: Education",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+  "pydantic>=2.11.0,<3.0.0",
+  "joblib>=1.4.0,<2.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/sethbarrett50/ma-pred"
+Issues = "https://github.com/sethbarrett50/ma-pred/issues"
+
+[project.scripts]
+ma-pred = "ma_pred.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0.0",
+  "ruff==0.15.5",
+]
