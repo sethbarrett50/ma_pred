@@ -6,6 +6,9 @@ import sys
 
 from ma_pred.predictor import MultiAgentPredictor
 from ma_pred.utils.config import PredictionConfig
+from ma_pred.utils.logging import get_logger
+
+logger = get_logger(__name__)
 
 
 def build_parser() -> argparse.ArgumentParser:

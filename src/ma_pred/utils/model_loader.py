@@ -67,40 +67,37 @@ class GGUFModelWrapper:
         )
 
         if isinstance(response, Iterator):
-            raise TypeError(
-                "Expected non-streaming completion response, "
-                "but got a streaming iterator."
-            )
+            raise TypeError('Expected non-streaming completion response, but got a streaming iterator.')
 
-        response_dict = cast("dict[str, Any]", response)
-        choices = response_dict.get("choices")
+        response_dict = cast('dict[str, Any]', response)
+        choices = response_dict.get('choices')
         if not isinstance(choices, list) or not choices:
-            raise ValueError("LLM response did not contain any choices.")
+            raise ValueError('LLM response did not contain any choices.')
 
         first_choice = choices[0]
         if not isinstance(first_choice, dict):
-            raise ValueError("LLM response choice had an unexpected shape.")
+            raise ValueError('LLM response choice had an unexpected shape.')
 
-        text = first_choice.get("text")
+        text = first_choice.get('text')
         if not isinstance(text, str):
-            raise ValueError("LLM response did not contain text output.")
+            raise ValueError('LLM response did not contain text output.')
 
         return text.strip()
 
     @staticmethod
     def _build_prompt(features: list[float]) -> str:
-        feature_text = ", ".join(str(value) for value in features)
+        feature_text = ', '.join(str(value) for value in features)
         return (
-            "You are a prediction agent.\n"
-            f"Input features: [{feature_text}]\n"
-            "Provide a short prediction or classification."
+            'You are a prediction agent.\n'
+            f'Input features: [{feature_text}]\n'
+            'Provide a short prediction or classification.'
         )
 
 
 class ModelLoader:
     """Utility class for loading models from files or import strings."""
 
-    SUPPORTED_FILE_SUFFIXES = {".pkl", ".pickle", ".joblib", ".gguf"}
+    SUPPORTED_FILE_SUFFIXES = {'.pkl', '.pickle', '.joblib', '.gguf'}
 
     @classmethod
     def load(cls, spec: str) -> SupportsPredict:
@@ -117,12 +114,12 @@ class ModelLoader:
         if path.exists():
             return cls._load_from_path(path)
 
-        if ":" in spec:
+        if ':' in spec:
             return cls._load_from_import(spec)
 
         raise ValueError(
             f"Unsupported model spec '{spec}'. "
-            "Use an existing file path or an import string like "
+            'Use an existing file path or an import string like '
             "'package.module:object_name'."
         )
 
@@ -137,27 +134,26 @@ class ModelLoader:
 
         if suffix not in cls.SUPPORTED_FILE_SUFFIXES:
             raise ValueError(
-                f"Unsupported model file type '{path.suffix}'. "
-                f"Supported: {sorted(cls.SUPPORTED_FILE_SUFFIXES)}"
+                f"Unsupported model file type '{path.suffix}'. Supported: {sorted(cls.SUPPORTED_FILE_SUFFIXES)}"
             )
 
         model: Any
-        if suffix == ".joblib":
+        if suffix == '.joblib':
             model = joblib.load(path)
-        elif suffix in {".pkl", ".pickle"}:
-            with path.open("rb") as file_handle:
+        elif suffix in {'.pkl', '.pickle'}:
+            with path.open('rb') as file_handle:
                 model = pickle.load(file_handle)
-        elif suffix == ".gguf":
+        elif suffix == '.gguf':
             model = GGUFModelWrapper(path)
         else:
-            raise ValueError(f"Unsupported model type: {path.suffix}")
+            raise ValueError(f'Unsupported model type: {path.suffix}')
 
         cls._validate_model(model, source=str(path))
         return model
 
     @classmethod
     def _load_from_import(cls, spec: str) -> SupportsPredict:
-        module_name, object_name = spec.split(":", maxsplit=1)
+        module_name, object_name = spec.split(':', maxsplit=1)
         module = importlib.import_module(module_name)
         model = getattr(module, object_name)
         cls._validate_model(model, source=spec)
@@ -166,7 +162,4 @@ class ModelLoader:
     @staticmethod
     def _validate_model(model: Any, source: str) -> None:
         if not isinstance(model, SupportsPredict):
-            raise TypeError(
-                f"Loaded object from '{source}' does not provide "
-                "a compatible .predict(...) method."
-            )
+            raise TypeError(f"Loaded object from '{source}' does not provide a compatible .predict(...) method.")

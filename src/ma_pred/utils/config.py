@@ -35,6 +35,14 @@ class PredictionConfig(BaseModel):
         default='text',
         description='How results should be printed.',
     )
+    log_level: Literal['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'] = Field(
+        default='INFO',
+        description='Logging verbosity.',
+    )
+    log_file: Path | None = Field(
+        default=Path('./logging/test.log'),
+        description='Optional log file path.',
+    )
 
     @field_validator('model_specs')
     @classmethod
@@ -50,6 +58,13 @@ class PredictionConfig(BaseModel):
         if not value:
             raise ValueError('At least one feature value must be provided.')
         return value
+
+    @field_validator('log_file')
+    @classmethod
+    def validate_log_file(cls, value: Path | None) -> Path | None:
+        if value is None:
+            return None
+        return value.expanduser()
 
     def existing_model_paths(self) -> list[Path]:
         """Return only specs that exist on disk as paths."""
