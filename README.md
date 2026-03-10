@@ -1,15 +1,3 @@
-Below is a **clean, simple README** suited for a student starter repository. It explains:
-
-* what the repo is
-* how to install with `uv`
-* how to download models
-* how to run predictions
-* how to extend the project
-
-You can drop this directly into `README.md`.
-
----
-
 # ma-pred
 
 A simple Python framework for experimenting with **multi-agent prediction systems** using locally downloaded models.
