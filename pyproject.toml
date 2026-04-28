@@ -40,13 +40,6 @@ package-dir = { "" = "src" }
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.ruff]
-line-length = 88
-target-version = "py313"
-
-[tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B"]
-
 [dependency-groups]
 dev = [
   "deptry>=0.25.1",
