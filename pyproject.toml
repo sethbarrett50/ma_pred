@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=82.0.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "ma-pred"
-version = "0.1.0"
+version = "0.1.1"
 description = "Repo for building multi-agent prediction models"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -22,8 +22,17 @@ classifiers = [
 ]
 
 dependencies = [
-  "pydantic>=2.11.0,<3.0.0",
+  "pydantic>=2.13.3,<3.0.0",
   "joblib>=1.4.0,<2.0.0",
+  "llama-cpp-python>=0.3.0,<1.0.0",
+]
+
+[dependency-groups]
+dev = [
+  "deptry>=0.25.1",
+  "pytest>=9.0.3",
+  "ruff>=0.15.11",
+  "twine>=6.2.0",
 ]
 
 [project.urls]
@@ -39,15 +48,8 @@ package-dir = { "" = "src" }
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.ruff]
-line-length = 88
-target-version = "py313"
+[tool.deptry]
+root = ["src"]
 
-[tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B"]
-
-[dependency-groups]
-dev = [
-  "pytest>=8.0.0",
-  "ruff==0.15.5",
-]
+[tool.deptry.per_rule_ignores]
+DEP003 = ["ma_pred"]

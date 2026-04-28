@@ -9,6 +9,9 @@ from typing import Literal, cast
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from ma_pred.utils.logging import get_logger
+
+logger = get_logger(__name__)
 ModelName = Literal['tinyllama', 'llama32_1b', 'deepseek_coder_1_3b']
 
 MODEL_SPECS: dict[ModelName, dict[str, str]] = {

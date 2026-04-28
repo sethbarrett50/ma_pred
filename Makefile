@@ -33,7 +33,12 @@ build: ## Build wheel and source distribution
 
 preflight: ## Build and verify package metadata
 	$(UV) build
-	uvx twine check dist/*
+	$(UV) tool run twine check dist/*
+
+deps.check: ## Check for dependency issues
+	$(UV) run deptry 
+	
+# ------- Run Code
 
 d.models: ## Download all starter models into ./models
 	$(UV) run $(PYTHON) scripts/model_downloader.py --all --output-dir $(MODELS_DIR)
