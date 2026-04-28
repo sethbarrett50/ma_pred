@@ -27,6 +27,14 @@ dependencies = [
   "llama-cpp-python>=0.3.0,<1.0.0",
 ]
 
+[dependency-groups]
+dev = [
+  "deptry>=0.25.1",
+  "pytest>=8.0.0",
+  "ruff>=0.15.5",
+  "twine>=6.2.0",
+]
+
 [project.urls]
 Repository = "https://github.com/sethbarrett50/ma-pred"
 Issues = "https://github.com/sethbarrett50/ma-pred/issues"
@@ -40,10 +48,8 @@ package-dir = { "" = "src" }
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[dependency-groups]
-dev = [
-  "deptry>=0.25.1",
-  "pytest>=8.0.0",
-  "ruff>=0.15.5",
-  "twine>=6.2.0",
-]
+[tool.deptry]
+root = ["src"]
+
+[tool.deptry.per_rule_ignores]
+DEP003 = ["ma_pred"]
