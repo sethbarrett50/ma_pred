@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ma-pred"
-version = "0.1.1"
+version = "0.1.2"
 description = "Repo for building multi-agent prediction models"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -24,7 +24,7 @@ classifiers = [
 dependencies = [
   "pydantic>=2.13.3,<3.0.0",
   "joblib>=1.4.0,<2.0.0",
-  "llama-cpp-python>=0.3.0,<1.0.0",
+  "llama-cpp-python>=0.3.22,<1.0.0",
 ]
 
 [dependency-groups]
