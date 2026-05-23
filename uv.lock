@@ -325,7 +325,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/61/fb/3932d67b89eb7d8f4
 
 [[package]]
 name = "ma-pred"
-version = "0.1.3"
+version = "0.1.4"
 source = { editable = "." }
 dependencies = [
     { name = "joblib" },
@@ -350,10 +350,10 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "deptry", specifier = ">=0.25.1" },
-    { name = "pytest", specifier = ">=9.0.3" },
-    { name = "ruff", specifier = ">=0.15.13" },
-    { name = "twine", specifier = ">=6.2.0" },
+    { name = "deptry", specifier = ">=0.25.1,<1" },
+    { name = "pytest", specifier = ">=9.0.3,<10" },
+    { name = "ruff", specifier = ">=0.15.13,<1" },
+    { name = "twine", specifier = ">=6.2.0,<7" },
 ]
 
 [[package]]

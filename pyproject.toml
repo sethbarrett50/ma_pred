@@ -29,10 +29,10 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-  "deptry>=0.25.1",
-  "pytest>=9.0.3",
-  "ruff>=0.15.13",
-  "twine>=6.2.0",
+  "deptry>=0.25.1,<1",
+  "pytest>=9.0.3,<10",
+  "ruff>=0.15.13,<1",
+  "twine>=6.2.0,<7",
 ]
 
 [project.urls]
