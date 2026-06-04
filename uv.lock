@@ -325,7 +325,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/61/fb/3932d67b89eb7d8f4
 
 [[package]]
 name = "ma-pred"
-version = "0.1.4"
+version = "0.1.5"
 source = { editable = "." }
 dependencies = [
     { name = "joblib" },
