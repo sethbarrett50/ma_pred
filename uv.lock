@@ -313,7 +313,7 @@ wheels = [
 
 [[package]]
 name = "llama-cpp-python"
-version = "0.3.25"
+version = "0.3.28"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "diskcache" },
@@ -321,7 +321,7 @@ dependencies = [
     { name = "numpy" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f9/fc/b488e00ebbca5c6a0b2303fb8ce3ded39a5f2293f7da3d7dfb25bcbb1bd9/llama_cpp_python-0.3.25.tar.gz", hash = "sha256:b901792eb474b3c83b07d2f6ed1668257b80133943c1fa57386d636103a66163", size = 67938860, upload-time = "2026-06-02T04:50:40.086Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/83/c1/ac90e90d28f405009a89f08a5727d3f0dac49309575fb2d1a5ff1d265826/llama_cpp_python-0.3.28.tar.gz", hash = "sha256:958227b394f413425d6039952096daa0b8b98328c6b99d652862aec775f1672d", size = 68296944, upload-time = "2026-06-07T23:54:28.292Z" }
 
 [[package]]
 name = "ma-pred"
@@ -344,7 +344,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "joblib", specifier = ">=1.4.0,<2.0.0" },
-    { name = "llama-cpp-python", specifier = ">=0.3.25,<1.0.0" },
+    { name = "llama-cpp-python", specifier = ">=0.3.28,<1.0.0" },
     { name = "pydantic", specifier = ">=2.13.4,<3.0.0" },
 ]
 
